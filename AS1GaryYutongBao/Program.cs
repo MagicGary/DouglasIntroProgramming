@@ -10,7 +10,7 @@ namespace AS1GaryYutongBao
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Test 2");
+            Console.WriteLine("Test 3");
         }
     }
 }
