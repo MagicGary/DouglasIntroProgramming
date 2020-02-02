@@ -18,8 +18,9 @@ namespace AS1GaryYutongBao
             Console.WriteLine(string.Format("Last 3 Digit of Student ID: {0}", ConfigurationManager.AppSettings["id2"]));
             Console.WriteLine(@"\\\\\\\\\\\\\\\\\\\\\\\");
             Console.WriteLine();
-            Console.WriteLine("Enter the department, course id, and credits \ne.g. C1175 3 B2200 5 A110 3 \n3 courses to be " +
-                "entered");
+            Console.WriteLine("Enter the department, course id, and credits " +
+                "\ne.g. C1175 3 B2200 5 A110 3 " +
+                "\n3 courses to be entered");
 
             
             string userInput = Console.ReadLine();
@@ -35,12 +36,13 @@ namespace AS1GaryYutongBao
 
         }
 
-
-        //output: [course1, course2, course3]
-        //Coursre:
-        //          department
-        //          courseLevel
-        //          credit
+        /// <summary>
+        /// 1. processes raw input
+        /// 2. feeds data to getCosts()
+        /// 3. accumulates all costs to get totalCosts
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>result in string to main() </returns>
         public static string getCourse(string input)
         {
             string result = ""; 
@@ -98,24 +100,33 @@ namespace AS1GaryYutongBao
             return result; 
         }
 
+        /// <summary>
+        /// gets costs for different categories for one course
+        /// </summary>
+        /// <param name="course"></param>
+        /// <returns>different cost for one course to getCourse</returns>
         public static double[] getCost(Course course)
         {
             double[] costs = new double[2];
 
             try
             {
-                Dictionary<string, double> labFeeDetail = new Dictionary<string, double>();
-                labFeeDetail.Add("A", 35.50);
-                labFeeDetail.Add("B", 10.00);
-                labFeeDetail.Add("C", 45.00);
+                Dictionary<string, double> labFeeDetail = new Dictionary<string, double>
+                {
+                    { "A", 35.50 },
+                    { "B", 10.00 },
+                    { "C", 45.00 }
+                };
 
-                Dictionary<string, double> tuitionCreditDetail = new Dictionary<string, double>();
-                tuitionCreditDetail.Add("1000", 250.00);
-                tuitionCreditDetail.Add("2000", 300.00);
-                tuitionCreditDetail.Add("3000", 500.00);
-                tuitionCreditDetail.Add("4000", 500.00);
+                Dictionary<string, double> tuitionCreditDetail = new Dictionary<string, double>
+                {
+                    { "1000", 250.00 },
+                    { "2000", 300.00 },
+                    { "3000", 500.00 },
+                    { "4000", 500.00 }
+                };
 
-               
+
                 costs[0] = tuitionCreditDetail[course.level] * course.credits;
                 costs[1] = labFeeDetail[course.department] * course.credits;
 
@@ -131,8 +142,6 @@ namespace AS1GaryYutongBao
 
 
             return costs;
-
-
         }
       
     }

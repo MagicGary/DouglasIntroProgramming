@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace AS1GaryYutongBao
 {
+    /// <summary>
+    /// Course
+    /// </summary>
     public class Course
-    {
+    {   
         public string department;
         public string level;
         public double credits;
@@ -17,7 +20,5 @@ namespace AS1GaryYutongBao
             this.level = level;
             this.credits = credits;
         }
-
-
     }
 }
