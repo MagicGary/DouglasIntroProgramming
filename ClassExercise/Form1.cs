@@ -54,7 +54,7 @@ namespace ClassExercise
                             }
                             else
                             {
-                                results.Add(name, 0);
+                                results.Add(name, 1);
                             }
                         }
                     }
@@ -70,7 +70,23 @@ namespace ClassExercise
                         sheetAdapter.Fill(datasheet);
                         conn.Close();
                     }
-                    var rows = datasheet.Rows; 
+                    var rows = datasheet.Rows;
+                    foreach (DataRow row in rows)
+                    {
+                        if (results.ContainsKey(row["1"].ToString()))
+                        {
+                            results[row["1"].ToString()] += 1;
+                        }
+                        else
+                        {
+                            results.Add(row["1"].ToString(), 1);
+                        }
+                    } 
+                }
+
+                foreach (var key in results.Keys)
+                {
+                    listBox1.Items.Add(String.Format("{0}: {1}", key, results[key].ToString())); 
                 }
 
 
